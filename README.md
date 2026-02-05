@@ -1,115 +1,54 @@
-Skip to content
-AnandSNair123
-AstroBio-Simulations
-Repository navigation
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-AstroBio-Simulations
-/
-README.md
-in
-main
+# biotic_growth_simulation
 
-Edit
+This project aims to simulate the growth of biotic colonies over time, modeling 
+factors like nutrient availability, reproduction rates, and environmental 
+conditions. The simulation is implemented in C++ and aims to provide an 
+educational tool for understanding dynamics and growth patterns in a controlled 
+environment.
+**Status**: Project is under active development.
+The design process is underway for simulating bacterial breeds, but can be 
+implemented for other species in the future.
+_Made for SSPaCe Astrobiology Payload (SAP)_
 
-Preview
-Indent mode
+## Table of Contents
+- [Architecture](#architecture)
+- [Aimed Features](#features)
+- [Installation](#installation)
+- [License](#license)
+- [Common Commands](#commonCommands)
 
-Spaces
-Indent size
 
-2
-Line wrap mode
+## Aimed Features
 
-Soft wrap
-Editing README.md file contents
-Selection deleted
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
+### Dynamic growth modeling: 
+Simulate how biotic colonies grow based on nutrient availability.
+
+### Environmental factors: 
+Adjust temperature, pH, and nutrient distribution to see how they affect 
+growth.
+
+### Data visualization: 
+Graphs and visual output for understanding biotic population changes over 
+time.
+
+
+## Project Structure
+
+```
+├── src/           # Core implementation files
+├── include/       # Header files
+├── apps/          # Application entry points (main.cpp)
+├── bin/           # Compiled executables
+├── results/       # Simulation output (CSV files, plots)
+├── utils/         # Python plotting utilities
+├── scripts/       # Windows batch scripts
+└── build/         # CMake build directory
+```
+
+
+## Architecture
+
+The codebase follows a modular C++ design with clear separation of concerns:
 
 ### Core Classes
 
@@ -189,6 +128,60 @@ cd build && cmake .. && make
 - Consumption rates
 - Acidic tolerance limits
 
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-No file chosen
-Attach files by dragging & dropping, selecting or pasting them.
+
+## Development Notes
+
+### Memory Management
+- Uses dynamic allocation for bacteria during reproduction
+- Proper cleanup implemented in simulation loops
+- Vectors manage bacteria populations automatically
+
+### Threading/Concurrency
+- Currently single-threaded simulation
+- Real-time console output during simulation using ANSI escape codes
+
+### File I/O
+- CSV output for data analysis
+- Exception handling for file operations
+- Results automatically saved to `results/` directory
+
+
+## Important Design Conventions
+
+1. **Composition over Inheritance**: The primary relationship is compositional.
+Inheritance should be avoided. All instances of inheritance being used should be
+changed.
+
+2. **Template Method**: The simulation loop follows a consistent pattern across
+different run methods
+
+3. **Factory Pattern**: Bacteria creation is handled through constructors 
+with randomization options
+
+4. The project integrates with Python for visualization:
+- `utils/plot.py` is called automatically after simulation
+- Requires matplotlib, pandas, and pickle
+- Virtual environment setup available in `venv/`
+
+
+## License
+
+Copyright (c) 2024 [Indian Institute of Space Science and Technology]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
